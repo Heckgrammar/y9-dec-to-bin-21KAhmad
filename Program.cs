@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Y9_DEC_TO_BIN_SKELETON
@@ -15,18 +16,37 @@ namespace Y9_DEC_TO_BIN_SKELETON
             string myString = "12"; //watch me being cast from string to int
             int myStringAsInt = Convert.ToInt32(myString); //watch me cast from string to int
 
-            //MAIN:  NUMBER CONVERSION PROGRAM
-
-            //CODE GOES HERE
+            Console.WriteLine(numberConversion(12, 2));
         }
 
         //static void means the function will not return a value so it does not need a data type 
         //...this function DOES return a value so the method must have a data type
         static string numberConversion(int number, int numberbase)
         {
-            //CODE GOES HERE
 
-            return result; //REMOVE THE RED LINE!
+            //Console.WriteLine("Enter your denery number");
+            //number = Console.Read();
+            number = 45;
+            int K = number;
+
+            int count = 0;
+            while (K > 0)
+            {
+                K /= numberbase;
+                count++;
+            }
+            int[] conversion = new int[count];
+
+            int newNumber = 4;
+            while (newNumber/numberbase != 0)
+            {
+                newNumber = number / numberbase;
+                conversion[count] = number & 2;
+                count = count - 1;
+                number = newNumber;
+            }
+            string result = Convert.ToString(conversion);
+            return result;
         }
     }
 }
