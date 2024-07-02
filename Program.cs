@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Services;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,8 +16,11 @@ namespace Y9_DEC_TO_BIN_SKELETON
             int myInt = 0; //just for testing single stepping
             string myString = "12"; //watch me being cast from string to int
             int myStringAsInt = Convert.ToInt32(myString); //watch me cast from string to int
-
-            Console.WriteLine(numberConversion(12, 2));
+            Console.WriteLine("Enter a denary number between 0 and 225");
+            int number = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the numberbase you want to convert to");
+            int numberbase = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(numberConversion(number, numberbase));
         }
 
         //static void means the function will not return a value so it does not need a data type 
@@ -27,24 +31,25 @@ namespace Y9_DEC_TO_BIN_SKELETON
             //Console.WriteLine("Enter your denery number");
             //number = Console.Read();
             int K = number;
-
             int count = 0;
+
             while (K > 0)
             {
-                K /= numberbase;
+                K = K/numberbase;
                 count++;
             }
-            int[] conversion = new int[count];
 
-            int newNumber = 4;
-            while (newNumber/numberbase != 0)
+            int[] conversion = new int[count];
+            int index = count - 1;
+
+            while (number > 0)
             {
-                newNumber = number / numberbase;
-                conversion[count] = number & 2;
-                count = count - 1;
-                number = newNumber;
+                conversion[index] = number % numberbase;
+                number = number/numberbase;
+                index--;
             }
-            string result = Convert.ToString(conversion);
+
+            string result = string.Join("", conversion);
             return result;
         }
     }
