@@ -26,7 +26,6 @@ namespace Y9_DEC_TO_BIN_SKELETON
 
             //Console.WriteLine("Enter your denery number");
             //number = Console.Read();
-            number = 45;
             int K = number;
 
             int count = 0;
