@@ -17,7 +17,7 @@ namespace Y9_DEC_TO_BIN_SKELETON
             string myString = "12"; //watch me being cast from string to int
             int myStringAsInt = Convert.ToInt32(myString); //watch me cast from string to int
 
-            Console.WriteLine("Enter a denary number between 0 and 225");
+            Console.WriteLine("Enter a denary number");
             int number = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the numberbase you want to convert to");
             int numberbase = Convert.ToInt32(Console.ReadLine());
