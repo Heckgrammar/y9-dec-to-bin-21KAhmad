@@ -17,20 +17,24 @@ namespace Y9_DEC_TO_BIN_SKELETON
             string myString = "12"; //watch me being cast from string to int
             int myStringAsInt = Convert.ToInt32(myString); //watch me cast from string to int
 
+            string myString2 = "I'm";
+            string bigString = myString2 + myString;
+            Console.WriteLine(bigString);
+
             Console.WriteLine("Enter a denary number");
             int number = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the numberbase you want to convert to");
             int numberbase = Convert.ToInt32(Console.ReadLine());
+            Validation(number);
             Console.WriteLine(numberConversion(number, numberbase));
+            Console.Read();
+
         }
 
         //static void means the function will not return a value so it does not need a data type 
         //...this function DOES return a value so the method must have a data type
         static string numberConversion(int number, int numberbase)
         {
-
-            //Console.WriteLine("Enter your denery number");
-            //number = Console.Read();
             int K = number;
             int count = 0;
 
@@ -46,11 +50,29 @@ namespace Y9_DEC_TO_BIN_SKELETON
             while (number > 0)
             {
                 conversion[index] = number % numberbase;
-                number = number/numberbase;
+                number = number / numberbase;
                 index--;
             }
-
             string result = string.Join("", conversion);
+            return result;
+        }
+        static string Validation(int number)
+        {
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+            string result = "0";
             return result;
         }
     }
