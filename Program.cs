@@ -17,19 +17,31 @@ namespace Y9_DEC_TO_BIN_SKELETON
             string myString = "12"; //watch me being cast from string to int
             int myStringAsInt = Convert.ToInt32(myString); //watch me cast from string to int
 
-            string myString2 = "I'm";
+            string myString2 = "I'm ";
             string bigString = myString2 + myString;
             Console.WriteLine(bigString);
 
+            //--------------------------------------------------------------------------------------------------------------------------------------------------------
+
             Console.WriteLine("Enter a denary number");
-            int number = Convert.ToInt32(Console.ReadLine());
+            string number = Console.ReadLine();
             Console.WriteLine("Enter the numberbase you want to convert to");
-            int numberbase = Convert.ToInt32(Console.ReadLine());
-            Validation(number);
-            Console.WriteLine(numberConversion(number, numberbase));
-            Console.Read();
+            string numberbase = Console.ReadLine();
+            bool validation = (numberValidation(number));
+            if (validation != true)
+            {
+                int number = Convert.ToInt32(number);
+                int numberbase = Convert.ToInt32(numberbase);
+                Console.WriteLine(numberConversion(number, numberbase));
+            }
+            else
+            {
+                Console.WriteLine("Invalid Format");
+            }
 
         }
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------
 
         //static void means the function will not return a value so it does not need a data type 
         //...this function DOES return a value so the method must have a data type
@@ -40,10 +52,9 @@ namespace Y9_DEC_TO_BIN_SKELETON
 
             while (K > 0)
             {
-                K = K/numberbase;
+                K = K / numberbase;
                 count++;
             }
-
             int[] conversion = new int[count];
             int index = count - 1;
 
@@ -56,24 +67,21 @@ namespace Y9_DEC_TO_BIN_SKELETON
             string result = string.Join("", conversion);
             return result;
         }
-        static string Validation(int number)
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        static bool numberValidation(int number)
         {
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-            string result = "0";
-            return result;
+            bool valid = true;
+            try
+            {
+                int result = int.Parse(number);
+            }
+            catch (FormatException)
+            {
+                valid = false;
+                return valid;
+            }
         }
     }
 }
