@@ -36,15 +36,16 @@ namespace Y9_DEC_TO_BIN_SKELETON
             if (chosenConversion == 2)
             {
                 Console.WriteLine("Enter a denary number between 0 and 256");
-                string number = (Console.ReadLine());
+                string number = Console.ReadLine();
                 int numberbase = 2;
-                while (validation(number) = false)
+                while (validation(number) == false)
                 {
                     Console.WriteLine("Please enter a denery number grater than 0");
-                    number = (Console.ReadLine());
+                    number = Console.ReadLine();
+
                 }
-                number = Convert.ToInt32(number);
-                Console.WriteLine(denaryToBinary(number, numberbase));
+                int intNumber = Convert.ToInt32(number);
+                Console.WriteLine(denaryToBinary(intNumber, numberbase));
             }
             if (chosenConversion == 3)
             {
@@ -63,18 +64,40 @@ namespace Y9_DEC_TO_BIN_SKELETON
         }
         //--------------------------------------------------------------------------------------------------------------------------------------------------------
         //static void means the function will not return a value so it does not need a data type
-        //...this function DOES return a value so the method must have a data type
+        //this function DOES return a value so the method must have a data type
 
-        static bool validation(string number)
+        private bool validation(string number)
         {
-            return false;
+            int Number;
+            bool valid = true;
+            try
+            {
+                Number = Convert.ToInt32(number);
+            }
+            catch (FormatException)
+            {
+                valid = false;
+            }
+            catch (OverflowException)
+            {
+                valid = false;
+            }
+            Number = Int32.Parse(number);
+            if (Number < 0)
+            {
+                valid = false;
+            }
+            return valid
+            
+            
+
         }
 
         static string denaryToBinary(int number, int numberbase)
         {
             int K = number;
             int count = 0;
-            //-----------------------------------------------------------------------------------------------------------------------------------------------
+            //-----------------------------------------------------------------------------------------------------------------------------------------------------
             //This code is necessary only if you have numbers larger than 8 bytes
             while (K > 0)
             {
